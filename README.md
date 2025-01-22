@@ -4,7 +4,6 @@
 The **Attendance Management System** is a RESTful application designed to simplify attendance tracking for educational institutions. It provides robust features for managing users, students, subjects, and attendance records. The backend is built with technologies like Core Java, Advanced Java, Hibernate, Spring (Boot & MVC), and MySQL. APIs are tested using Postman for seamless functionality.
 
 ---
-
 ## Features  
 
 ### **1. User Management:**  
