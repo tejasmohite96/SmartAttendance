@@ -16,8 +16,8 @@ The **Attendance Management System** is a RESTful application designed to simpli
 ### **2. Student Management:**  
 - Add, view, update, and delete student records.  
 - Retrieve student details by ID or get all students.  
-- **Sort students by name and email.**  
-- **Retrieve students by name.**   
+- Sort students by name and email.  
+- Retrieve students by name.   
 
 ### **3. Subject Management:**  
 - Add, view, update, and delete subjects.  
