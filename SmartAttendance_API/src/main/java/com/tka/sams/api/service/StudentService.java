@@ -37,4 +37,12 @@ public class StudentService {
 	public String deleteStudent(long id) {
 		return dao.deleteStudent(id);
 	}
+
+	public List<Student> getStudentsByOrder(String orderBy) {
+		return dao.getStudentsByOrder(orderBy);
+	}
+
+	public List<Student> getStudentByName(String name) {
+		return dao.getStudentByName(name);
+	}
 }

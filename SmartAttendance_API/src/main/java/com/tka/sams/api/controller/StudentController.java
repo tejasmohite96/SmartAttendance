@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tka.sams.api.entity.Student;
@@ -48,5 +49,15 @@ public class StudentController {
 	@DeleteMapping("/delete-student/{id}")
 	public String deleteStudent(@PathVariable long id) {
 		return studentService.deleteStudent(id);
+	}
+
+	@GetMapping("/orderby")
+	public List<Student> getStudentsByOrder(@RequestParam(required = false, defaultValue = "name") String orderBy) {
+		return studentService.getStudentsByOrder(orderBy);
+	}
+
+	@GetMapping("/get-student-by-name/{name}")
+	public List<Student> getStudentById(@PathVariable String name) {
+		return studentService.getStudentByName(name);
 	}
 }

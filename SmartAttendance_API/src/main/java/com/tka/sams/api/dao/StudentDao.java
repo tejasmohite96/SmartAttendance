@@ -6,6 +6,8 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -118,6 +120,50 @@ public class StudentDao {
 			session.close();
 		}
 		return msg;
+	}
+
+	public List<Student> getStudentsByOrder(String orderBy) {
+		Session session = null;
+		List<Student> list = null;
+		try {
+			session = factory.openSession();
+			Criteria criteria = session.createCriteria(Student.class);
+
+			// Apply sorting based on the orderBy parameter
+			if ("name".equalsIgnoreCase(orderBy)) {
+				criteria.addOrder(Order.asc("name"));
+			} else if ("email".equalsIgnoreCase(orderBy)) {
+				criteria.addOrder(Order.asc("email"));
+			} else {
+				// Default sorting if orderBy is invalid or null
+				criteria.addOrder(Order.asc("name"));
+			}
+
+			list = criteria.list();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (session != null) {
+				session.close();
+			}
+		}
+		return list;
+	}
+
+	public List<Student> getStudentByName(String name) {
+
+		Session session = null;
+		List<Student> student = null;
+		try {
+
+			session = factory.openSession();
+			Criteria criteria = session.createCriteria(Student.class);
+			criteria.add(Restrictions.eq("name", name));
+			student = criteria.list();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return student;
 	}
 
 }
